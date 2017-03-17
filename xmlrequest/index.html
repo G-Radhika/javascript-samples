@@ -32,7 +32,14 @@
         var xmlRequest = this
         if(xmlRequest.readyState == 4 && xmlRequest.status == 200) {
             console.log('response received')
+            console.log(xmlRequest.response)
             var albums = JSON.parse(xmlRequest.response)
+            /* TODO: this didn't work for me
+            albums.list.forEach(function(album){
+                console.log(album.title)
+            })
+            */
+            // The following works as well
             for(var i=0; i<albums.length; i++) {
                 var title = albums[i].title
                 console.log(title)

@@ -28,7 +28,10 @@ app.get('/xml', function (req, res) {
 
 app.get('/json', function (req, res) {
   var albums = [{ title: 'sridhar'},{title: 'radhika'}] 
-  res.json(albums)
+  //The following code works
+  //res.json(albums)
+  //Alternative method
+  res.send(JSON.stringify(albums))
 })
 
 app.listen(3000, function () {
