@@ -1,0 +1,16 @@
+{
+  "name": "xmlrequest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "radhik.g@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "express" : "latest",
+    "xml-writer": "latest",
+    "path": "latest"
+  }
+}

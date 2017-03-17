@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Testing XML response data from nodejs</title>
+</head>
+<body>
+<div id = "xmlresponse"> </div>
+</body>
+<script>
+    
+    function myResponseCallback() {
+        var xmlRequest = this
+        if(xmlRequest.readyState == 4 && xmlRequest.status == 200) {
+            console.log('response received')
+            var xmldoc = xmlRequest.responseXML
+            var albums = xmldoc.getElementsByTagName("album")
+            for(var i=0; i<albums.length; i++) {
+                var title = albums[i].childNodes[0].firstChild.nodeValue
+                console.log(title)
+            }
+        }
+    }
+    function sendMyXMLRequest() {
+        var request = new XMLHttpRequest()
+        request.open('GET', '/xml', true)
+        request.onreadystatechange = myResponseCallback
+        request.send(null)
+    }
+
+    function myJSONResponseCallback() {
+        var xmlRequest = this
+        if(xmlRequest.readyState == 4 && xmlRequest.status == 200) {
+            console.log('response received')
+            var albums = JSON.parse(xmlRequest.response)
+            for(var i=0; i<albums.length; i++) {
+                var title = albums[i].title
+                console.log(title)
+            }
+        }
+
+    }
+
+    function sendMyJSONRequest() {
+        var request = new XMLHttpRequest()
+        request.open('GET', 'json', true)
+        request.onreadystatechange = myJSONResponseCallback
+        request.send(null)
+    }
+
+    window.onload = sendMyJSONRequest
+</script>
+
+</html>
